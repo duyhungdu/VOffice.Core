@@ -590,6 +590,7 @@
     <Content Include="Uploads\CQVP\DocumentDelivered\2017\07\d546926e-462b-47ca-b474-5dcfe4cfddc9.pdf" />
     <Content Include="Uploads\VLA\TaskOpinion\3f71d3d3-73ce-4b21-a3ec-7ec8e20cd85e.pdf" />
     <Content Include="Uploads\VLA\TaskOpinion\3fb0317c-9ff2-41a9-a693-add490f0d556.pdf" />
+    <Content Include="voffice.bak" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
