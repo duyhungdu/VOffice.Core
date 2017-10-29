@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{ACD90EC9-CF0B-4EB7-BBCF-463AF59855DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOffice.Model", "VOffice.Model\VOffice.Model.csproj", "{372F68A0-9DE2-442A-8822-84CB9061E9C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOffice.Repository", "VOffice.Repository\VOffice.Repository.csproj", "{5275E8B1-71ED-4A67-BBFE-28EEED11E0A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOffice.API", "VOffice.API\VOffice.API.csproj", "{55235F06-B0C8-4358-89F9-3042BF5F27C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{ACD1EBCD-6EEE-4183-8FBB-6A9A0E783B3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOffice.Core", "VOffice.Core\VOffice.Core.csproj", "{A19C1649-2612-42F8-949B-2F3BEE62162A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOffice.Util", "VOffice.Util\VOffice.Util.csproj", "{2EA5020F-CF87-4E5C-A303-F93CABAB2442}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOffice.ApplicationService", "VOffice.ApplicationService\VOffice.ApplicationService.csproj", "{D58568BF-7737-4471-8BC1-6608A883A86B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{372F68A0-9DE2-442A-8822-84CB9061E9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372F68A0-9DE2-442A-8822-84CB9061E9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372F68A0-9DE2-442A-8822-84CB9061E9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372F68A0-9DE2-442A-8822-84CB9061E9C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5275E8B1-71ED-4A67-BBFE-28EEED11E0A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5275E8B1-71ED-4A67-BBFE-28EEED11E0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5275E8B1-71ED-4A67-BBFE-28EEED11E0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5275E8B1-71ED-4A67-BBFE-28EEED11E0A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55235F06-B0C8-4358-89F9-3042BF5F27C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55235F06-B0C8-4358-89F9-3042BF5F27C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55235F06-B0C8-4358-89F9-3042BF5F27C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55235F06-B0C8-4358-89F9-3042BF5F27C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19C1649-2612-42F8-949B-2F3BEE62162A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19C1649-2612-42F8-949B-2F3BEE62162A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19C1649-2612-42F8-949B-2F3BEE62162A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19C1649-2612-42F8-949B-2F3BEE62162A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA5020F-CF87-4E5C-A303-F93CABAB2442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA5020F-CF87-4E5C-A303-F93CABAB2442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA5020F-CF87-4E5C-A303-F93CABAB2442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA5020F-CF87-4E5C-A303-F93CABAB2442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D58568BF-7737-4471-8BC1-6608A883A86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D58568BF-7737-4471-8BC1-6608A883A86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D58568BF-7737-4471-8BC1-6608A883A86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D58568BF-7737-4471-8BC1-6608A883A86B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{372F68A0-9DE2-442A-8822-84CB9061E9C5} = {ACD90EC9-CF0B-4EB7-BBCF-463AF59855DE}
+		{5275E8B1-71ED-4A67-BBFE-28EEED11E0A3} = {ACD90EC9-CF0B-4EB7-BBCF-463AF59855DE}
+		{A19C1649-2612-42F8-949B-2F3BEE62162A} = {ACD1EBCD-6EEE-4183-8FBB-6A9A0E783B3E}
+		{2EA5020F-CF87-4E5C-A303-F93CABAB2442} = {ACD1EBCD-6EEE-4183-8FBB-6A9A0E783B3E}
+		{D58568BF-7737-4471-8BC1-6608A883A86B} = {ACD90EC9-CF0B-4EB7-BBCF-463AF59855DE}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://duongthinhit.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = VOffice.API\\VOffice.API.csproj
+		SccProjectName1 = VOffice.API
+		SccLocalPath1 = VOffice.API
+		SccProjectUniqueName2 = VOffice.Core\\VOffice.Core.csproj
+		SccProjectTopLevelParentUniqueName2 = VOffice.Core.sln
+		SccProjectName2 = VOffice.Core
+		SccLocalPath2 = VOffice.Core
+		SccProjectUniqueName3 = VOffice.Model\\VOffice.Model.csproj
+		SccProjectTopLevelParentUniqueName3 = VOffice.Core.sln
+		SccProjectName3 = VOffice.Model
+		SccLocalPath3 = VOffice.Model
+		SccProjectUniqueName4 = VOffice.Repository\\VOffice.Repository.csproj
+		SccProjectTopLevelParentUniqueName4 = VOffice.Core.sln
+		SccProjectName4 = VOffice.Repository
+		SccLocalPath4 = VOffice.Repository
+		SccProjectUniqueName5 = VOffice.Util\\VOffice.Util.csproj
+		SccProjectTopLevelParentUniqueName5 = VOffice.Core.sln
+		SccProjectName5 = VOffice.Util
+		SccLocalPath5 = VOffice.Util
+		SccProjectUniqueName6 = VOffice.ApplicationService\\VOffice.ApplicationService.csproj
+		SccProjectTopLevelParentUniqueName6 = VOffice.Core.sln
+		SccProjectName6 = VOffice.ApplicationService
+		SccLocalPath6 = VOffice.ApplicationService
+	EndGlobalSection
+EndGlobal

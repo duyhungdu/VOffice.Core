@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55235F06-B0C8-4358-89F9-3042BF5F27C5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VOffice.API</RootNamespace>
+    <AssemblyName>VOffice.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>App_Data/XmlDocument.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words, Version=11.3.0.0, Culture=neutral, PublicKeyToken=47d5d0e1ef9d080b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.0.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FileTypeDetective, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileTypeDetective.1.0.0.0\lib\net40\FileTypeDetective.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\Api\Account\AccountController.cs" />
+    <Compile Include="Controllers\Api\Account\AspNetRoleController.cs" />
+    <Compile Include="Controllers\Api\Account\ClientDeviceAnalysticController.cs" />
+    <Compile Include="Controllers\Api\Account\AspNetGroupController.cs" />
+    <Compile Include="Controllers\Api\Account\TestController.cs" />
+    <Compile Include="Controllers\Api\Account\AspNetUserController.cs" />
+    <Compile Include="Controllers\Api\Calendar\ImportantJobController.cs" />
+    <Compile Include="Controllers\Api\Category\NoticeController.cs" />
+    <Compile Include="Controllers\Api\Category\StatusController.cs" />
+    <Compile Include="Controllers\Api\Category\CustomerController.cs" />
+    <Compile Include="Controllers\Api\Category\MeetingRoomController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentDocumentFieldController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentFieldController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentFieldDepartmentController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentHistoryController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentDeliveredController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentReceivedController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentRecipentController.cs" />
+    <Compile Include="Controllers\Api\Document\ExternalSendReceiveDivisionController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentSignedByController.cs" />
+    <Compile Include="Controllers\Api\Document\DocumentTypeController.cs" />
+    <Compile Include="Controllers\Api\Organization\DepartmentController.cs" />
+    <Compile Include="Controllers\Api\Organization\DepartmentStaffController.cs" />
+    <Compile Include="Controllers\Api\Organization\StaffController.cs" />
+    <Compile Include="Controllers\Api\Share\ApplicationLoggingController.cs" />
+    <Compile Include="Controllers\Api\Share\FileUploadController.cs" />
+    <Compile Include="Controllers\Api\Share\NotificationCenterController.cs" />
+    <Compile Include="Controllers\Api\Share\UserNotificationController.cs" />
+    <Compile Include="Controllers\Api\Share\LoginHistoryController.cs" />
+    <Compile Include="Controllers\Api\Share\SystemConfigController.cs" />
+    <Compile Include="Controllers\Api\Share\SystemConfigDepartmentController.cs" />
+    <Compile Include="Controllers\Api\Task\ProjectController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskAttachmentController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskActivityController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskOpinionController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskTypeController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskDocumentController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskAssigneeController.cs" />
+    <Compile Include="Controllers\Api\Task\TaskController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Api\Calendar\EventController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Modules\EMailClassic.cs" />
+    <Compile Include="Modules\ServiceModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Aspose.Words.dll" />
+    <Content Include="bin\Autofac.dll" />
+    <Content Include="bin\Autofac.Integration.Mvc.dll" />
+    <Content Include="bin\Autofac.Integration.WebApi.dll" />
+    <Content Include="bin\cs\FluentValidation.resources.dll" />
+    <Content Include="bin\da\FluentValidation.resources.dll" />
+    <Content Include="bin\de\FluentValidation.resources.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\es\FluentValidation.resources.dll" />
+    <Content Include="bin\fa\FluentValidation.resources.dll" />
+    <Content Include="bin\FileTypeDetective.dll" />
+    <Content Include="bin\fi\FluentValidation.resources.dll" />
+    <Content Include="bin\FluentValidation.dll" />
+    <Content Include="bin\FluentValidation.Mvc.dll" />
+    <Content Include="bin\FluentValidation.pdb" />
+    <Content Include="bin\FluentValidation.xml" />
+    <Content Include="bin\fr\FluentValidation.resources.dll" />
+    <Content Include="bin\it\FluentValidation.resources.dll" />
+    <Content Include="bin\ko\FluentValidation.resources.dll" />
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Cors.dll" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\mk\FluentValidation.resources.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\nl\FluentValidation.resources.dll" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\pl\FluentValidation.resources.dll" />
+    <Content Include="bin\pt\FluentValidation.resources.dll" />
+    <Content Include="bin\ru\FluentValidation.resources.dll" />
+    <Content Include="bin\sv\FluentValidation.resources.dll" />
+    <Content Include="bin\System.Net.Http.Extensions.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Primitives.dll" />
+    <Content Include="bin\System.Web.Cors.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.Cors.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.Owin.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\tr\FluentValidation.resources.dll" />
+    <Content Include="bin\VOffice.API.dll" />
+    <Content Include="bin\VOffice.API.pdb" />
+    <Content Include="bin\VOffice.ApplicationService.dll" />
+    <Content Include="bin\VOffice.ApplicationService.pdb" />
+    <Content Include="bin\VOffice.Core.dll" />
+    <Content Include="bin\VOffice.Core.pdb" />
+    <Content Include="bin\VOffice.Model.dll" />
+    <Content Include="bin\VOffice.Model.pdb" />
+    <Content Include="bin\VOffice.Repository.dll" />
+    <Content Include="bin\VOffice.Repository.pdb" />
+    <Content Include="bin\VOffice.Util.dll" />
+    <Content Include="bin\VOffice.Util.pdb" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\XmlDocument.xml" />
+    <Content Include="bin\zh-CN\FluentValidation.resources.dll" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\VOffice.API.dll.config" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <None Include="Properties\PublishProfiles\VOFFICE.API.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="updateDB.sql" />
+    <Content Include="Uploads\Avatar\01ad68a7-fd51-42c2-ab4d-ee1e48274db2.jpg" />
+    <Content Include="Uploads\Avatar\058ec575-bef1-4e9b-9e53-40310fd3be5e.jpg" />
+    <Content Include="Uploads\Avatar\09a87d00-5d08-44aa-9255-7c2342d374c0.jpg" />
+    <Content Include="Uploads\Avatar\0d0e1610-82a6-4983-be54-ca00c2449cd8.jpg" />
+    <Content Include="Uploads\Avatar\14977612-9935-43f0-a82e-8901f8e392c6.jpg" />
+    <Content Include="Uploads\Avatar\15e12211-7b21-429a-8761-2094b19cbdb5.jpg" />
+    <Content Include="Uploads\Avatar\19a1cae1-5edb-44fa-aa5f-f75dfa9b410c.jpg" />
+    <Content Include="Uploads\Avatar\1df7c61c-1608-44b4-9680-6d0985d7e6cf.png" />
+    <Content Include="Uploads\Avatar\20ebcb33-8bb5-4be0-b50f-989a41d45787.jpg" />
+    <Content Include="Uploads\Avatar\2157384e-22dd-40ef-b989-b53c8d0b77a9.jpg" />
+    <Content Include="Uploads\Avatar\253d8f2f-2302-4df4-9002-7c99c6a491ee.jpg" />
+    <Content Include="Uploads\Avatar\269f3fdd-4baa-4e79-b49a-9b40f061252c.jpg" />
+    <Content Include="Uploads\Avatar\27b09c65-eea9-471b-b52c-acf7f8537d6d.jpg" />
+    <Content Include="Uploads\Avatar\2977a1c9-df99-4fdc-ad77-cdcecf95e5d5.jpg" />
+    <Content Include="Uploads\Avatar\2b9464c1-29ae-4ebf-aec6-6986d8754a7b.jpg" />
+    <Content Include="Uploads\Avatar\2b9bfced-175b-4091-9417-15c6059d73fe.jpg" />
+    <Content Include="Uploads\Avatar\2eba2df6-8b46-45c2-852c-c506d16a998e.jpg" />
+    <Content Include="Uploads\Avatar\3185dc52-9b0c-4b6e-ba2c-ef309db47b8d.jpg" />
+    <Content Include="Uploads\Avatar\341d90cb-cc3c-444d-a9d9-a28a89da0373.jpg" />
+    <Content Include="Uploads\Avatar\35423f6e-6d97-4e84-bd62-eb3f8fbe8c85.jpg" />
+    <Content Include="Uploads\Avatar\37ec86dd-7a0e-49cd-8fb1-49c37fba6237.jpg" />
+    <Content Include="Uploads\Avatar\3fe21e42-d866-48fe-995c-e033b6b1005e.jpg" />
+    <Content Include="Uploads\Avatar\41695ef8-fed2-46c3-8650-fc1f638d4add.jpg" />
+    <Content Include="Uploads\Avatar\486bc32f-9dc6-41d1-884f-ebd16bf5ef69.jpg" />
+    <Content Include="Uploads\Avatar\4af8d66a-12d2-4e67-9c16-35e271944dfd.jpg" />
+    <Content Include="Uploads\Avatar\4bc64ab8-a660-444e-b2c1-b602254f3e21.jpg" />
+    <Content Include="Uploads\Avatar\4dc4abd2-3be0-4d75-afe6-5a13ee088cf0.jpg" />
+    <Content Include="Uploads\Avatar\56bbc153-c64d-442a-93b0-b3a960808690.jpg" />
+    <Content Include="Uploads\Avatar\5a681090-0277-48ec-9c19-22899b603b6b.jpg" />
+    <Content Include="Uploads\Avatar\5c28ddfe-c483-4e8e-ab39-c66d35987d3e.jpg" />
+    <Content Include="Uploads\Avatar\5ef59c81-3490-4a63-a515-e2993b2c31ef.jpg" />
+    <Content Include="Uploads\Avatar\68ffa5a0-9d4d-4cf1-88ab-f0f341221877.jpg" />
+    <Content Include="Uploads\Avatar\6924fb8a-1616-4e26-a4f2-a0dd2c1a4de4.jpg" />
+    <Content Include="Uploads\Avatar\6d3cbaba-dfc2-4237-ada2-45998e240c1a.jpg" />
+    <Content Include="Uploads\Avatar\6f1b484b-9ec3-4114-b0d0-904dc0b61994.jpg" />
+    <Content Include="Uploads\Avatar\72b5f0e3-7f11-4b60-a7f5-52be9a923cae.jpg" />
+    <Content Include="Uploads\Avatar\74463f69-9986-443a-b69d-020d10a42c46.jpg" />
+    <Content Include="Uploads\Avatar\772f5011-b9eb-4cb2-8195-551696d1b7cb.jpg" />
+    <Content Include="Uploads\Avatar\7b298a34-08c9-4e3e-93c8-af4aa322196c.jpg" />
+    <Content Include="Uploads\Avatar\7d4e7337-580e-4967-b87f-ac4878dd6acd.jpg" />
+    <Content Include="Uploads\Avatar\815b5124-a8d2-4ca6-89f2-82a14abdbc0d.jpg" />
+    <Content Include="Uploads\Avatar\878e084a-dc9a-45ab-9774-ad722cbca71b.jpg" />
+    <Content Include="Uploads\Avatar\8af23f3b-29a4-471b-9161-827af0abcb29.jpg" />
+    <Content Include="Uploads\Avatar\8c0196f9-9c12-46e9-a01e-cd3e5d221edc.jpg" />
+    <Content Include="Uploads\Avatar\8c64d273-0f7e-4ca3-b072-41f915e0ae86.jpg" />
+    <Content Include="Uploads\Avatar\94278e75-f817-46ff-bbf1-853cd0023f32.jpg" />
+    <Content Include="Uploads\Avatar\9617e862-10aa-4cd9-a3f8-f155f711f6e0.jpg" />
+    <Content Include="Uploads\Avatar\97611058-326d-4482-824b-ccbee1af1512.jpg" />
+    <Content Include="Uploads\Avatar\9ba8ab4a-65ac-409a-999a-acfb631933ac.jpg" />
+    <Content Include="Uploads\Avatar\9bfbaa3a-da30-4c7a-912a-c37189027f10.jpg" />
+    <Content Include="Uploads\Avatar\9bfe112a-cf80-42ed-87ab-ad651e81e292.jpg" />
+    <Content Include="Uploads\Avatar\9e3fa802-0a9a-43b1-a27b-212a0376cd6f.jpg" />
+    <Content Include="Uploads\Avatar\a0401b32-8899-4b3f-a1e6-052cf3a2cd3f.jpg" />
+    <Content Include="Uploads\Avatar\a34985f1-4cce-43c3-80cf-842f25ffedad.jpg" />
+    <Content Include="Uploads\Avatar\a5d48458-093c-4529-9938-45ab2ae8f31d.jpg" />
+    <Content Include="Uploads\Avatar\a748f0d7-690d-4e79-8eaf-b965014e1edf.jpg" />
+    <Content Include="Uploads\Avatar\a9947a33-4fcb-4b51-a62e-6b12e58e1533.jpg" />
+    <Content Include="Uploads\Avatar\avatar.jpg" />
+    <Content Include="Uploads\Avatar\b1cd2389-3b0e-4d5a-9de9-62d2d1858812.jpg" />
+    <Content Include="Uploads\Avatar\b27c33d8-08b4-4510-95bf-73ea3e0608e9.jpg" />
+    <Content Include="Uploads\Avatar\b51fea2c-0a13-48ea-ac01-a80522c854a9.jpg" />
+    <Content Include="Uploads\Avatar\bb3b7b9f-16ad-4e25-a792-186aceffe699.jpg" />
+    <Content Include="Uploads\Avatar\bf8ddb10-93a1-4f52-a6fb-de42276419f6.jpg" />
+    <Content Include="Uploads\Avatar\c38d6799-d13d-47d6-98ce-3df59e4c2cb4.jpg" />
+    <Content Include="Uploads\Avatar\cb6102d0-2fa2-49b3-8d0a-147502d8c012.jpg" />
+    <Content Include="Uploads\Avatar\cd74abad-6d26-46ac-93ba-423b72d56c52.jpg" />
+    <Content Include="Uploads\Avatar\ce295734-f4b9-4b16-bec3-b3fc3e7bf902.jpg" />
+    <Content Include="Uploads\Avatar\e54693ae-9540-421d-8e36-bcc8ad5d576a.jpg" />
+    <Content Include="Uploads\Avatar\e7767d75-2d0d-4e52-af09-ad81ce8383e0.jpg" />
+    <Content Include="Uploads\Avatar\ec94b47c-74d2-41f6-9639-cff3da6fe8e2.jpg" />
+    <Content Include="Uploads\Avatar\ede8bce6-117a-42e2-bf45-e1268a2d56e9.jpg" />
+    <Content Include="Uploads\Avatar\f5259553-8d99-4957-89c8-7bb17f53cfc8.jpg" />
+    <Content Include="Uploads\Avatar\f5e24eed-a059-4520-b41e-8c5bd879a628.jpg" />
+    <Content Include="Uploads\Avatar\fa924585-6bca-493d-8ce9-a5018d6783a7.jpg" />
+    <Content Include="Uploads\Avatar\fab05e46-580d-4db2-b790-a0d090ee9ef6.jpg" />
+    <Content Include="Uploads\Avatar\feb11101-e9ac-4ec2-b2cd-ff58fc8847ac.jpg" />
+    <Content Include="Uploads\Avatar\no-avatar.jpg" />
+    <Content Include="Uploads\CQVP\ReceivedDocument\2017\05\3286d08f-21d6-4d1e-89a6-3cca2a7ee3e4.png" />
+    <Content Include="Uploads\file\85387ddb-815e-4079-85e2-f0dda68da6ce.jpg" />
+    <Content Include="Uploads\VLA\TaskOpinion\12b3f15a-4c58-4534-a381-2fb5423437ac.png" />
+    <Content Include="Uploads\VLA\TaskOpinion\28019000-34e4-4146-9df0-196fd2f515b6.png" />
+    <Content Include="Uploads\VLA\TaskOpinion\3292a812-df83-48e7-8434-131927562778.png" />
+    <Content Include="Uploads\VLA\TaskOpinion\38957025-68a0-478e-a563-94954a1752e5.png" />
+    <Content Include="Uploads\VLA\TaskOpinion\4fa09e4d-d86a-4b7b-a200-2b37672262bb.jpg" />
+    <Content Include="Uploads\VLA\TaskOpinion\577776f5-72ed-42ef-b385-68392ecaf268.png" />
+    <Content Include="Uploads\VLA\TaskOpinion\713e6bf9-91ab-4709-9d6a-4a044e98ec16.jpg" />
+    <Content Include="Uploads\VLA\TaskOpinion\95697786-8d42-4479-8795-69d03d87b1c6.png" />
+    <Content Include="Uploads\VLA\TaskOpinion\9ca07cc0-8b50-40ba-9137-7f6f8694ba12.jpg" />
+    <Content Include="Uploads\VLA\TaskOpinion\dce1b8e9-c15d-4d69-83d7-5db9781adbb1.jpg" />
+    <Content Include="Uploads\VLA\TaskOpinion\e68bec8a-9878-454b-a20e-082e253fe90d.jpg" />
+    <Content Include="Uploads\VLA\TaskOpinion\e860165e-e589-4c1f-bcfc-766fa6f990bd.jpg" />
+    <Content Include="Uploads\VLA\Task\05fa3d4e-826e-45f9-83a2-747a505c7118.png" />
+    <Content Include="Uploads\VLA\Task\184f0581-5e74-46c5-a027-0133354f4ff4.jpg" />
+    <Content Include="Uploads\VLA\Task\87ac1abe-0ee1-45a2-a288-b456aea26b29.png" />
+    <Content Include="Uploads\VLA\Task\97bc6e9c-59b7-4ba9-813d-a902b60f7e8b.png" />
+    <Content Include="Uploads\VLA\Task\9c54aa0a-badf-4bc6-9648-f8e0d7d595f9.png" />
+    <Content Include="Uploads\VLA\Task\a97fed93-0585-435a-bff4-b6af792ad60f.png" />
+    <Content Include="Uploads\VLA\Task\dce0efa6-100f-4f29-a58e-dcfe5f0c3115.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Uploads\CQVP\DocumentDelivered\2017\05\30e76bd2-d218-4d71-9911-ac0d9d7293f8.docx" />
+    <Content Include="Uploads\VLA\Task\acc69d3d-2ea4-4b29-8918-b26a37616253.docx" />
+    <Content Include="Uploads\Avatar\Thumbs.db" />
+    <Content Include="Uploads\VLA\TaskOpinion\03ee144c-3525-4c75-a9d7-797531df208e.zip" />
+    <Content Include="Uploads\VLA\TaskOpinion\28eba340-9896-4ff8-a807-c19520fac0dc.pdf" />
+    <Content Include="Uploads\VLA\TaskOpinion\74672419-ea1a-4aea-9493-f99ab82bccb3.pdf" />
+    <Content Include="Uploads\VLA\TaskOpinion\9272ed36-2211-4d74-8252-8791595f7337.docx" />
+    <Content Include="Uploads\VLA\TaskOpinion\e1c2bd2f-ec31-4834-912c-4d7acffd4806.pdf" />
+    <Content Include="Uploads\VLA\Task\9e1619ce-3c49-48fc-8176-cade6fd58ecc.pdf" />
+    <Content Include="Uploads\VLA\Task\c8526bdf-dfc7-4019-8010-7fef9b979ea7.doc" />
+    <Content Include="Uploads\VLA\Task\cc369530-26dd-4345-89e0-48e1559c711a.pdf" />
+    <Content Include="Uploads\VLA\Task\cfbbe5f8-797e-446e-9fdc-539f38891ede.pdf" />
+    <Content Include="Uploads\VLA\Task\f253beaf-9562-433d-9939-2f81106ff6e2.docx" />
+    <Content Include="Uploads\CQVP\DocumentDelivered\2017\07\1a212fcd-3d72-45a1-aaa8-c22130418698.pdf" />
+    <Content Include="Uploads\CQVP\DocumentDelivered\2017\07\239cf5c0-9a03-49ec-aa58-94419fb4cffa.pdf" />
+    <Content Include="Uploads\CQVP\DocumentDelivered\2017\07\55b59e0c-9522-4bc6-b3bb-00f5b0a7385a.pdf" />
+    <Content Include="Uploads\CQVP\DocumentDelivered\2017\07\d546926e-462b-47ca-b474-5dcfe4cfddc9.pdf" />
+    <Content Include="Uploads\VLA\TaskOpinion\3f71d3d3-73ce-4b21-a3ec-7ec8e20cd85e.pdf" />
+    <Content Include="Uploads\VLA\TaskOpinion\3fb0317c-9ff2-41a9-a693-add490f0d556.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Temp\" />
+    <Folder Include="Uploads\VLA\DocumentDelivered\" />
+    <Folder Include="Uploads\VLA\DocumentReceived\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VOffice.ApplicationService\VOffice.ApplicationService.csproj">
+      <Project>{d58568bf-7737-4471-8bc1-6608a883a86b}</Project>
+      <Name>VOffice.ApplicationService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VOffice.Core\VOffice.Core.csproj">
+      <Project>{a19c1649-2612-42f8-949b-2f3bee62162a}</Project>
+      <Name>VOffice.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VOffice.Model\VOffice.Model.csproj">
+      <Project>{372f68a0-9de2-442a-8822-84cb9061e9c5}</Project>
+      <Name>VOffice.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VOffice.Repository\VOffice.Repository.csproj">
+      <Project>{5275e8b1-71ed-4a67-bbfe-28eeed11e0a3}</Project>
+      <Name>VOffice.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VOffice.Util\VOffice.Util.csproj">
+      <Project>{2ea5020f-cf87-4e5c-a303-f93cabab2442}</Project>
+      <Name>VOffice.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8888</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8888/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

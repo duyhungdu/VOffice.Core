@@ -1,0 +1,2911 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VOffice.API</name>
+    </assembly>
+    <members>
+        <member name="M:VOffice.API.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,VOffice.API.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:VOffice.API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:VOffice.API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,VOffice.API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,VOffice.API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(VOffice.API.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:VOffice.API.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},VOffice.API.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:VOffice.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:VOffice.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleKey.#ctor(VOffice.API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:VOffice.API.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,VOffice.API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:VOffice.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:VOffice.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VOffice.API.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:VOffice.API.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VOffice.API.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AccountController.RestorePassword(VOffice.API.Models.ResetPasswordViewModel)">
+            <summary>
+            RestorePassword
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Account.AspNetRoleController">
+            <summary>
+            Manager application roles
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.#ctor">
+            <summary>
+            Contractor
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.GetAll">
+            <summary>
+            Get all records
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.CheckPermission(System.String,System.String)">
+            <summary>
+            Check permission of user
+            </summary>
+            <param name="userId"></param>
+             <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.AddAspNetRole(VOffice.Model.AspNetRole)">
+            <summary>
+            Add AspNetRole
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.UpdateAspNetRole(VOffice.Model.AspNetRole)">
+            <summary>
+            Update AspNetRole
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.DeleteAspNetRole(System.String)">
+            <summary>
+            Delete AspNetRole
+            </summary>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.DeleteAspNetUser(System.String)">
+            <summary>
+            Mark an account as deleted, remove refrence Staff and User
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.GetRoleById(System.String)">
+            <summary>
+            Get Role by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetRoleController.GetRolesOfUser(System.String)">
+            <summary>
+            Get Roles of User
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Account.ClientDeviceAnalysticController">
+            <summary>
+            TestController
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.ClientDeviceAnalysticController.#ctor">
+            <summary>
+            TestController
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.ClientDeviceAnalysticController.AddUserRole(System.String,System.String)">
+            <summary>
+            Add Role to user like Group
+            </summary>
+            <param name="groupCode"></param>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Account.AspNetGroupController">
+            <summary>
+            TestController
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.#ctor">
+            <summary>
+            AspNetGroupController
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.Search(System.Boolean)">
+            <summary>
+            Get All Group
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.GetGroupsForUser(System.String,System.Boolean)">
+            <summary>
+            Get All Group of User
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.AddGroupsForUser(System.Collections.Generic.List{VOffice.Model.ComplexGroupUser})">
+            <summary>
+            Insert groups for user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.DeleteRolesOfGroup(VOffice.Model.ComplexGroupRole)">
+            <summary>
+            Delete roles of group
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.GetRolesOfGroup(System.String)">
+            <summary>
+            Get All Roles of group
+            </summary>
+            <param name="groupId"></param>
+            <returns></returns>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetGroupController.AddRolesForGroup(System.Collections.Generic.List{VOffice.Model.ComplexRoleOfGroup})">
+            <summary>
+            Add Roles for group
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Account.TestController">
+            <summary>
+            TestController
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.TestController.#ctor">
+            <summary>
+            TestController
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.TestController.AddUserRole(System.String,System.String)">
+            <summary>
+            Add Role to user like Group
+            </summary>
+            <param name="groupCode"></param>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Account.AspNetUserController">
+            <summary>
+            Application User Account
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.#ctor">
+            <summary>
+            Contructor
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.GetTreeMenu(System.String,System.Boolean)">
+            <summary>
+            Get tree menu
+            </summary>
+            <param name="userId"></param>
+            <param name="menu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.GetAllRoleByUserId(System.String)">
+            <summary>
+            Get all role by user id
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.GetAllUser">
+            <summary>
+            Get All User
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.GetUserByUserName(System.String)">
+            <summary>
+            Get User by Username
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.GetUserByUserId(System.String)">
+            <summary>
+            Get User by UserId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.UpdateAspNetUser(VOffice.Model.AspNetUser)">
+            <summary>
+            Update AspNetUser
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.DeleteAspNetUser(System.String)">
+            <summary>
+            Mark an account as deleted, remove refrence Staff and User
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.Search(VOffice.Repository.Queries.AspNetUserQuery)">
+            <summary>
+            Get All User
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.DeleteRolesOfUser(VOffice.Model.ComplexUserRole)">
+            <summary>
+            Delete all role of user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.AddRolesForUser(System.Collections.Generic.List{VOffice.Model.ComplexRoleOfUser})">
+            <summary>
+            Add Roles for group
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Account.AspNetUserController.LockOrUnlockUser(System.String)">
+            <summary>
+            Lock or Unlock of user
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Calendar.ImportantJobController">
+            <summary>
+            CRUD important job
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.ImportantJobController.#ctor(VOffice.ApplicationService.Implementation.Contract.ICalendarService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_calendarService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.ImportantJobController.Get(System.Int32)">
+            <summary>
+            Get important job
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.ImportantJobController.Add(VOffice.Model.ImportantJob)">
+            <summary>
+            Add ImportantJob
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.ImportantJobController.Edit(VOffice.Model.ImportantJob)">
+            <summary>
+            Edit ImportantJob
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.ImportantJobController.DeleteLogicalImportantJob(System.Int32)">
+            <summary>
+            Delete ImportantJob
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Calendar.EventController">
+            <summary>
+            Calendar service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.#ctor(VOffice.ApplicationService.Implementation.Contract.ICalendarService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_calendarService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.Get(System.Int32)">
+            <summary>
+            Get a Event by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.Add(VOffice.Model.Event)">
+            <summary>
+            Insert a Event to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.AddComplexEvent(VOffice.Model.ComplexEvent)">
+            <summary>
+            Add complex event calendar
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.Update(VOffice.Model.Event)">
+            <summary>
+            Update a Event to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.UpdateComplexEvent(VOffice.Model.ComplexEvent)">
+            <summary>
+            Update complex event
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.UpdateNonAuthorizeComplexEvent(VOffice.Model.ComplexEvent)">
+            <summary>
+            Udpate None Authorize event
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a Event as Deleted
+            </summary>
+            <param name="eventId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.DeleteLogicalNonAuthorize(System.Int32)">
+            <summary>
+            delete event non authorize
+            </summary>
+            <param name="eventId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.DeferredEvent(VOffice.Model.CustomEventDeferred)">
+            <summary>
+            Deferred an event
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.AcceptedEvent(VOffice.Model.CustomEventAccepted)">
+            <summary>
+            Accepted an event
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetEventOfDepartment(System.Int32,System.Int32,System.String,System.Boolean,System.DateTime)">
+            <summary>
+            Get Event of Department
+            </summary>
+            <param name="type"></param>
+            <param name="departmentId"></param>
+            <param name="userId"></param>
+            <param name="morning"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetEventAcceptedOfDepartment(System.Int32,System.Int32,System.String,System.Boolean,System.DateTime)">
+            <summary>
+            get event accepted
+            </summary>
+            <param name="type"></param>
+            <param name="departmentId"></param>
+            <param name="userId"></param>
+            <param name="morning"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.AddEventUserNotify(VOffice.Model.EventUserNotify)">
+            <summary>
+            Insert EventNotify to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.AddEventUserNotifies(System.Collections.Generic.List{VOffice.Model.EventUserNotify})">
+            <summary>
+            Insert list EventNotifies to Database
+            </summary>
+            <param name="lstEventUserNotifies"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.DeleteEventUserNotifiesByEvent(VOffice.Model.CustomEvent)">
+            <summary>
+            Delete list eventNotifies by eventId
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetDeparmentEventOfWeek(System.Int32,System.DateTime)">
+            <summary>
+            Get event of deparment for week
+            </summary>
+            <param name="departmentId"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetMultiDeparmentEventOfWeek(System.String,System.DateTime)">
+            <summary>
+            Get event of multi deparment for week
+            </summary>
+            <param name="listDepartmentId"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetDeparmentLeaderEventOfWeek(System.Int32,System.DateTime)">
+            <summary>
+            Get department leader of week
+            </summary>
+            <param name="departmentId"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.AddEventGoogle(VOffice.Model.EventGoogleEvent)">
+            <summary>
+            Add to google event
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetEventFile(System.Int32,System.DateTime,System.Boolean,System.String)">
+            <summary>
+            get event doc
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Calendar.EventController.GetLeaderEventFile(System.Int32,System.DateTime)">
+            <summary>
+            get event doc
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Category.NoticeController">
+            <summary>
+            Customer API. An element of CategoryService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.#ctor(VOffice.ApplicationService.Implementation.Contract.ICategoryService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_categoryService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.Get(System.Int32)">
+            <summary>
+            Get a Notice by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.Add(VOffice.Model.Notice)">
+            <summary>
+            Insert a Notice to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.Update(VOffice.Model.Notice)">
+            <summary>
+            Update a Notice
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a Notice as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.Search(VOffice.Repository.Queries.NoticeQuery)">
+            <summary>
+            Get a list of Notice via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.NoticeController.NoticesInTop">
+            <summary>
+            Get a list of Notice display in top via SQL Store
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Category.StatusController">
+            <summary>
+            Customer API. An element of CategoryService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.#ctor(VOffice.ApplicationService.Implementation.Contract.ICategoryService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_categoryService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.Get(System.Int32)">
+            <summary>
+            Get a Status by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.GetByType(System.String)">
+            <summary>
+            Get a Status by Type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.GetByCode(VOffice.Repository.Queries.StatusQuery)">
+            <summary>
+            Get a Status by Code
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.Search(VOffice.Repository.Queries.StatusQuery)">
+            <summary>
+            Get a list of Status via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.GetAll">
+            <summary>
+            Get All Status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.Add(VOffice.Model.Status)">
+            <summary>
+            Insert a Status to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.Update(VOffice.Model.Status)">
+            <summary>
+            Update a Status
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.StatusController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a Status as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Category.CustomerController">
+            <summary>
+            Customer API. An element of CategoryService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.#ctor(VOffice.ApplicationService.Implementation.Contract.ICategoryService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_categoryService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.Get(System.Int32)">
+            <summary>
+            Get a Customer by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.Search(VOffice.Repository.Queries.CustomerQuery)">
+            <summary>
+            Get a list of Customers via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.GetByDepartment(System.Int32,System.String)">
+            <summary>
+            Fetch records by departmentId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.GetAll">
+            <summary>
+            Get All Customer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.Add(VOffice.Model.Customer)">
+            <summary>
+            Insert a Customer to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.Update(VOffice.Model.Customer)">
+            <summary>
+            Update a Customer
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.CustomerController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a Customer as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Category.MeetingRoomController">
+            <summary>
+            Customer API. An element of CategoryService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.#ctor(VOffice.ApplicationService.Implementation.Contract.ICategoryService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_categoryService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.Get(System.Int32)">
+            <summary>
+            Get a MeetingRoom by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.Search(VOffice.Repository.Queries.MeetingRoomQuery)">
+            <summary>
+            Get a list of MeetingRoom via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.GetAll">
+            <summary>
+            Get All MeetingRoom
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.Add(VOffice.Model.MeetingRoom)">
+            <summary>
+            Insert a MeetingRoom to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.Update(VOffice.Model.MeetingRoom)">
+            <summary>
+            Update a MeetingRoom
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a MeetingRoom as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Category.MeetingRoomController.GetMeetingRoomByDepartmentId(System.Int32)">
+            <summary>
+            Get a list of meetingRoom by departmentId via SQL Store
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController">
+            <summary>
+            DocumentField API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.Get(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Get a DocumentDocumentField by DocumentId and DocmentFieldDepartmentId
+            </summary>
+            <param name="DocId"></param>
+            <param name="DocumentFileDepartmentId"></param>
+            <param name="ReceivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.Search(VOffice.Repository.Queries.DocumentDocumentFieldQuery)">
+            <summary>
+            Get a list of DocumentDocumentField via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.GetAll">
+            <summary>
+            Get All DocumentDocumentField
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.Add(VOffice.Model.DocumentDocumentField)">
+            <summary>
+            Insert a DocumentDocumentField to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.AddDocumentDocumentFields(System.Collections.Generic.List{VOffice.Model.DocumentDocumentField})">
+            <summary>
+            Insert List DocumentDocumentField to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.Update(VOffice.Model.DocumentDocumentField)">
+            <summary>
+            Update a DocumentDocumentField
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a DocumentDocumentField as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.DeleteDocumentDocumentFields(System.Collections.Generic.List{VOffice.Model.DocumentDocumentField})">
+            <summary>
+            Delete list DocumentRecipent
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDocumentFieldController.DeleteDocDocumentFieldsByDocIdAndReceivedDoc(VOffice.CustomDocumentRecipent)">
+            <summary>
+            delete list document document field by document id
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentFieldController">
+            <summary>
+            DocumentField API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.Get(System.Int32)">
+            <summary>
+            Get a DocumentField by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.Search(VOffice.Repository.Queries.DocumentFieldQuery)">
+            <summary>
+            Get a list of DocumentField via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.GetAll">
+            <summary>
+            Get All DocumentField
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.GetDocumentFieldaNotInDepartment(System.Int32)">
+            <summary>
+            Get All DocumentField not in Department
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.Add(VOffice.Model.DocumentField)">
+            <summary>
+            Insert a DocumentField to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.AddDocumentFieldSystem(VOffice.Model.DocumentField)">
+            <summary>
+            Insert a DocumentField and clone for department to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.CloneDocumentFieldSystem(System.String)">
+            <summary>
+            Copy DocumentField for Department
+            </summary>
+            <param name="ListDepartmentId"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:VOffice.API.Controllers.Api.Document.DocumentFieldController.Update(VOffice.Model.DocumentField)" -->
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a DocumentField as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController">
+            <summary>
+            DocumentField for Department
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.Get(System.Int32)">
+            <summary>
+            Get a DocumentField by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.Search(VOffice.Repository.Queries.DocumentFieldDepartmentQuery)">
+            <summary>
+            Get a list of DocumentFieldDepartment via SQL Store 
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.Filter(System.Int32)">
+            <summary>
+            Get a list of DocumentFieldDepartment when add Document....
+            </summary>
+            <param name="departmentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.GetDocFieldDeaprtmentByDocIdAndReceivedDoc(System.Int32,System.Boolean)">
+            <summary>
+            Get a list of DocumentFieldDepartment when has DocumentId and RecceivedDocument....
+            </summary>
+            <param name="documentId"></param> 
+            <param name="receivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.GetAll">
+            <summary>
+            Get All DocumentFieldDepartment
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.Add(VOffice.Model.DocumentFieldDepartment)">
+            <summary>
+            Insert a DocumentFieldDepartment to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.Update(VOffice.Model.DocumentFieldDepartment)">
+            <summary>
+            Update a DocumentFieldDepartment
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.GetOutputDocFieldDepartment(System.Collections.Generic.List{VOffice.CustomDocumentField})">
+            <summary>
+            Get documentFieldDepartment of list Department from list object documentFieldSystem of Send Place
+            </summary>
+            <param name="listInputDocFieldDepartment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentFieldDepartmentController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a DocumentFieldDepartment as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentHistoryController">
+            <summary>
+            DocumentHistory API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentHistoryController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentHistoryController.Add(VOffice.Model.DocumentHistory)">
+            <summary>
+            Insert a DocumentHistory to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentHistoryController.GetHistoryDocument(System.Int32,System.Boolean)">
+            <summary>
+            Get DocumentHistories from Database
+            </summary>
+            <param name="documentId"></param>
+            <param name="receivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentDeliveredController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.Get(System.Int32)">
+            <summary>
+            Get a DocumentReceived by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.Search(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Get a list of Document via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.GetAll">
+            <summary>
+            Get All DocumentReceived
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.Add(VOffice.Model.DocumentDelivered)">
+            <summary>
+            Insert a DocumentReceived to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.AddComplexDocumentDelivered(VOffice.Model.ComplexDocumentDelivered)">
+            <summary>
+            Add complex document delivered
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.Update(VOffice.Model.DocumentDelivered)">
+            <summary>
+            Update a DocumentReceived
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.UpdateComplexDocumentDelivered(VOffice.Model.ComplexDocumentDelivered)">
+            <summary>
+            Update complex document delivered
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.DeleteLogical(System.Int32,System.Boolean,System.String)">
+            <summary>
+            Mark a DocumentReceived as Deleted
+            </summary>
+            <param name="id"></param>
+            <param name="receivedDocument"></param>
+            <param name="retrievedText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.DocumentDeliveredStatisticsList(VOffice.Repository.Queries.DocumentDeliveredStatisticsQuery)">
+            <summary>
+            get document delivered query list
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentDeliveredController.DocumentDeliveredStatisticsListDownLoadFile(VOffice.Repository.Queries.DocumentDeliveredStatisticsQuery)">
+            <summary>
+            down load file report
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentReceivedController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.CheckUserDocumentReadable(VOffice.Repository.Queries.DocumentCheckReadableQuery)">
+            <summary>
+            Check current user is or isn't DocumentRecipent
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.Get(System.Int32)">
+            <summary>
+            Get a DocumentReceived by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.Search(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Get a list of Document via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.CountNewDocument(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Count number of Document via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.SearchListDocument(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Search a small list with full document info field
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.GetAll">
+            <summary>
+            Get All DocumentReceived
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.Add(VOffice.Model.DocumentReceived)">
+            <summary>
+            Insert a DocumentReceived to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.AddSetOfDocumentReceived(System.Collections.Generic.List{VOffice.Model.ComplexDocumentReceived})">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.Update(VOffice.Model.DocumentReceived)">
+            <summary>
+            Update a DocumentReceived
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.DeleteLogical(System.Int32,System.Boolean,System.String)">
+            <summary>
+            Mark a DocumentReceived as Deleted
+            </summary>
+            <param name="id"></param>
+            <param name="receivedDocument"></param>
+            <param name="retrievedText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.RetrieveDocument(System.Int32,System.String,System.Boolean)">
+            <summary>
+            Retrieve all Document
+            </summary>
+            <param name="id"></param>
+             <param name="retrieveText"></param>
+            <param name="receivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.ForwardDocument(System.Collections.Generic.List{VOffice.Model.DocumentRecipent})">
+            <summary>
+            Forward Current Document
+            </summary>
+            <param name="listRecipent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.GetDocumentDetail(System.String,System.Int32)">
+            <summary>
+            Get a Document Detail Received by Id and Type
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.SearchAddedDocumentBook(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Get a list of Document via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.GetHistoryAddedBookDocument(System.Int32,System.Boolean)">
+            <summary>
+            Get a list of Departments with status addedBookDocument via SQL Store
+            </summary>
+            <param name="documentId"></param>
+            <param name="receivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.SearchDocument(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Search document info
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.DownloadDocumentBook(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            download document book
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.DownloadTotalDocument(System.DateTime,System.DateTime,System.String,System.Int32)">
+            <summary>
+            count total document by 
+            </summary>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <param name="listDepartmentId"></param>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.DownloadTotalDocumentList(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            get document query
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.GetComplexCount(System.String,System.Int32)">
+            <summary>
+            Get complex count 
+            </summary>
+            <param name="userId"></param>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.CountUserDocument(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.CheckHistoryAddedBookDoc(System.Int32,System.Boolean)">
+            <summary>
+            Check document has send out
+            </summary>
+            <param name="documentId"></param>
+            <param name="receivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.GetDocumentUnRead(VOffice.Repository.Queries.DocumentReceivedQuery)">
+            <summary>
+            Get document UnRead
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentReceivedController.CheckPermissionUserDocument(System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Check permission user document detail
+            </summary>
+            <param name="userId"></param>
+            <param name="documentId"></param>
+            <param name="receivedDocument"></param>
+            <param name="listDepartment"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentRecipentController">
+            <summary>
+            Document Recipent
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.Add(VOffice.Model.DocumentRecipent)">
+            <summary>
+            Insert a DocumentRecipent to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.AddDocumentRecipents(System.Collections.Generic.List{VOffice.Model.DocumentRecipent})">
+            <summary>
+            Insert a List Recipent to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.DeleteDocumentRecipents(System.Collections.Generic.List{VOffice.Model.DocumentRecipent})">
+            <summary>
+            Delete list DocumentRecipent
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.DeleteRecipentsByDocIdAndReceivedDoc(VOffice.CustomDocumentRecipent)">
+            <summary>
+            Delete list DocumentRecipent by DocumentId and ReceivedDocument
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.GetListRecipentsByDocIdAndReceivedDoc(System.Int32,System.Boolean)">
+            <summary>
+            Get a list of DocumentRecipents by DocumentId and ReceivedDocument and DepartmentId
+            </summary>
+            <param name="documentId"></param>
+            <param name="receivedDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentRecipentController.UpdateDocumentRecipentByDocIdAndReceivedDoc(VOffice.Model.DocumentRecipent)">
+            <summary>
+            Update a DocumentRecipent
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController">
+            <summary>
+            DocumentSignedBy service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.Get(System.Int32)">
+            <summary>
+            Get ExternalSendReceiveDivision by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.Search(VOffice.Repository.Queries.ExternalSendReceiveDivisionQuery)">
+            <summary>
+            Filter Grid
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.GetAll">
+            <summary>
+            Fetch all
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.GetByDepartment(System.Int32)">
+            <summary>
+            Fetch records by departmentId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.Add(VOffice.Model.ExternalSendReceiveDivision)">
+            <summary>
+            Insert to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.Update(VOffice.Model.ExternalSendReceiveDivision)">
+            <summary>
+            Update a record
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ExternalSendReceiveDivisionController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark an item as deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentSignedByController">
+            <summary>
+            DocumentSignedBy service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.Get(System.Int32)">
+            <summary>
+            Get DocumentSignedBy by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.Search(VOffice.Repository.Queries.DocumentSignedByQuery)">
+            <summary>
+            Filter Grid
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.GetAll">
+            <summary>
+            Fetch all
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.GetByDepartment(System.Int32)">
+            <summary>
+            Fetch records by departmentId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.Add(VOffice.Model.DocumentSignedBy)">
+            <summary>
+            Insert to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.Update(VOffice.Model.DocumentSignedBy)">
+            <summary>
+            Update a record
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentSignedByController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark an item as deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DocumentTypeController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.#ctor(VOffice.ApplicationService.Implementation.Contract.IDocumentService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_documentService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.Get(System.Int32)">
+            <summary>
+            Get a DocumentType by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.Search(VOffice.Repository.Queries.DocumentTypeQuery)">
+            <summary>
+            Get a list of DocumentType via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.GetAll">
+            <summary>
+            Get All DocumentType
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.Add(VOffice.Model.DocumentType)">
+            <summary>
+            Insert a DocumentType to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.Update(VOffice.Model.DocumentType)">
+            <summary>
+            Update a DocumentType
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DocumentTypeController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a DocumentType as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.DepartmentStaffController">
+            <summary>
+            DocumentStaff API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.#ctor(VOffice.ApplicationService.Implementation.Contract.IOrganizationService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_organizationService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.Add(VOffice.Model.DepartmentStaff)">
+            <summary>
+            Insert a DepartmentStaff to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.GetDepartmentStaff(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get a list of DeparmentStaff via SQL Store
+            </summary>
+            <param name="type"></param>
+            <param name="departmentId"></param>
+            <param name="staffId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.AddDepartmentStaffs(System.Collections.Generic.List{VOffice.Model.DepartmentStaff})">
+            <summary>
+            Insert list DepartmentStaff to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.DeleteDepartmentStaffByStaff(VOffice.Model.ComplexDepartmentStaff)">
+            <summary>
+            Delete list DepartmentStaff by StaffId to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.DeleteDepartmentsStaff(System.Collections.Generic.List{VOffice.Model.ComplexDepartmentOfStaff})">
+            <summary>
+            Delete list DepartmentStaff to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.DepartmentStaffController.AddStaffsDepartment(System.Collections.Generic.List{VOffice.Model.ComplexStaffDepartment})">
+            <summary>
+            Update staff inside department
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.ProjectController">
+            <summary>
+            Task.Project service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.Get(System.Int32)">
+            <summary>
+            Get a Project by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.GetByDepartment(System.Int32,System.String)">
+            <summary>
+            Fetch records by departmentId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.Search(VOffice.Repository.Queries.ProjectQuery)">
+            <summary>
+            Get a list of Project via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.Add(VOffice.Model.Project)">
+            <summary>
+            Add Project
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.Update(VOffice.Model.Project)">
+            <summary>
+            Update Project
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.ProjectController.DeleteLogical(System.Int32)">
+            <summary>
+            Delete Project
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.TaskActivityController">
+            <summary>
+            TaskType service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskActivityController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskActivityController.Add(VOffice.Model.TaskActivity)">
+            <summary>
+            Insert a TaskActivity to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskActivityController.GetByTaskId(System.Int32)">
+            <summary>
+            Query list TaskActivity by TaskId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskActivityController.GetTaskOpinionAndActivityByTaskId(System.Int32)">
+            <summary>
+            Query list TaskActivity and Opinion by TaskId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskActivityController.GetTaskOpinionAndActivityByUserId(System.String,System.Int32)">
+            <summary>
+            Query list TaskActivity and Opinion by UserId
+            </summary>
+            <param name="userId"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.TaskOpinionController">
+            <summary>
+            TaskType service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskOpinionController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskOpinionController.Add(VOffice.Model.TaskOpinion)">
+            <summary>
+            Insert a TaskOpinion to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskOpinionController.Update(VOffice.Model.TaskOpinion)">
+            <summary>
+            Update TaskOpinion 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskOpinionController.GetByTaskId(System.Int32)">
+            <summary>
+            Query list Opinion by TaskId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskOpinionController.GetTaskOpinionByOpinionId(System.Int32)">
+            <summary>
+            Get TaskOpinion by OpinionId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Document.TaskTypeController">
+            <summary>
+            TaskType service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contractor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.Get(System.Int32)">
+            <summary>
+            Get TaskType by Id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.GetByDepartment(System.Int32,System.String)">
+            <summary>
+            Fetch records by departmentId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.Search(VOffice.Repository.Queries.TaskTypeQuery)">
+            <summary>
+            Get a list TaskType via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.Add(VOffice.Model.TaskType)">
+            <summary>
+            Add TaskType
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.Update(VOffice.Model.TaskType)">
+            <summary>
+            Update TaskType
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Document.TaskTypeController.DeleteLogical(System.Int32)">
+            <summary>
+            Delete Task Type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Organization.DepartmentController">
+            <summary>
+            Department API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.#ctor(VOffice.ApplicationService.Implementation.Contract.IOrganizationService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_organizationService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.Search(VOffice.Repository.Queries.DepartmentQuery)">
+            <summary>
+            Get a list of Deparment via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.BuildOrganizationTree(VOffice.Repository.Queries.DepartmentQuery)">
+            <summary>
+            Get a list of Deparment via SQL Store for Document
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.GetAll">
+            <summary>
+            Get All Deparments
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.GetListDepartmentByUserId(System.String)">
+            <summary>
+            Get All Deparments by userId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.Add(VOffice.Model.Department)">
+            <summary>
+            Insert a Deparment to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.Update(VOffice.Model.Department)">
+            <summary>
+            Update a Deparment
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.GetSubDepartmentNonSeft(VOffice.Repository.Queries.DepartmentQuery)">
+            <summary>
+            Get a list of Deparment not include itself via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.FilterDepartmentOrganiz(System.Int32,System.Int32,System.String)">
+            <summary>
+            Get a list of Deparment follow keyword in form organiz via SQL Store
+            </summary>
+            <param name="type"></param>
+            <param name="departmentId"></param>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.Get(System.Int32)">
+            <summary>
+            Insert a Deparment to Database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.DeleteLogical(System.Int32)">
+            <summary>
+            Delete Logical a Deparment
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.DepartmentController.GetListDepartmentByStaffId(System.Int32)">
+            <summary>
+            Get All Deparments by staffId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Organization.StaffController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.#ctor(VOffice.ApplicationService.Implementation.Contract.IOrganizationService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="organizationService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetById(System.Int32)">
+            <summary>
+            Get a Staff by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.SearchStaff(System.Int32,System.Int32,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Get a list of staffs via SQL Store
+            </summary>
+            <param name="departmentId"></param>
+            <param name="parentId"></param>
+            <param name="keyword"></param>
+            <param name="active"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetByDepartment(System.Int32)">
+            <summary>
+            Get all Staff by DepartmentId
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetStaffNoAccountByDepartment(System.Int32)">
+            <summary>
+            Get all Staff by DepartmentId
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetAllStaffs(System.Int32)">
+            <summary>
+            Get all Staffs
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetAll">
+            <summary>
+            Get All Staff
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.Add(VOffice.Model.ComplexStaff)">
+            <summary>
+            Insert a Staff to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.Update(VOffice.Model.Staff)">
+            <summary>
+            Update a staff
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.UpdateStaffAccount(VOffice.Model.Staff)">
+            <summary>
+            Update Staff Account
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.UpdateStaffGeneralCalendar(VOffice.Model.Staff)">
+            <summary>
+            update general calendar
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetStaffGeneralCalendar(System.String)">
+            <summary>
+            get staff general user id
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a Staff as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetStaffProfile(System.String)">
+            <summary>
+            get staff profile by user id
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetStaffByUserId(System.String)">
+            <summary>
+            Get staff by userid
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetBirthDayByDeparmentId(System.Int32)">
+            <summary>
+            get birth of day by deparmentid
+            </summary>
+            <param name="deparmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetSeniorLeaderStaff(System.Int32)">
+            <summary>
+            Get seniorLeader by departmentId
+            </summary>
+            <param name="deparmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Organization.StaffController.GetStaffNonOrExtraDepartment">
+            <summary>
+            Get Get Staff Non Or Extra Department
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.ApplicationLoggingController">
+            <summary>
+            Customer API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.ApplicationLoggingController.#ctor(VOffice.ApplicationService.Implementation.Contract.IShareService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_shareService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.ApplicationLoggingController.Search(VOffice.Repository.Queries.ApplicationLoggingQuery)">
+            <summary>
+            Get a list of ApplicationLogging via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.ApplicationLoggingController.Get(System.Int32)">
+            <summary>
+            Get A Application By id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.ApplicationLoggingController.Delete(VOffice.Model.ComplexApplicationLogging)">
+            <summary>
+            Delete ApplicationLogging
+            </summary>
+            <param name="applicationLogging"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.FileUploadController">
+            <summary>
+            FileUpload
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.FileUploadController.PostAsync">
+            <summary>
+            Post Document Files
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.FileUploadController.PostAvatarAsync">
+            <summary>
+            Post avata file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.FileUploadController.PostAsyncTaskAttachment">
+            <summary>
+            Post Task Files
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.FileUploadController.PostAsyncTaskOpinionAttachment">
+            <summary>
+            Post TaskOpinion Files
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.MyStreamProvider">
+            <summary>
+            Working with stream provider
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.MyStreamProvider.#ctor(System.String)">
+            <summary>
+            stream provider
+            </summary>
+            <param name="uploadPath"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.MyStreamProvider.GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders)">
+            <summary>
+            Get Local FileName
+            </summary>
+            <param name="headers"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.NotificationCenterController">
+            <summary>
+            Customer API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.NotificationCenterController.#ctor(VOffice.ApplicationService.Implementation.Contract.IShareService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_shareService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.NotificationCenterController.Add(VOffice.Model.NotificationCenter)">
+            <summary>
+            Insert a Notification
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.NotificationCenterController.Update(VOffice.Model.NotificationCenter)">
+            <summary>
+            Update notification
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.NotificationCenterController.GetCountNotificationUnread(System.String,System.String)">
+            <summary>
+            return count notification unread
+            </summary>
+            <param name="userId"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.NotificationCenterController.GetNotificationCenter(VOffice.Repository.Queries.NotificationCenterQuery)">
+            <summary>
+            Get notification center
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.UserNotificationController">
+            <summary>
+            Customer API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.UserNotificationController.#ctor(VOffice.ApplicationService.Implementation.Contract.IShareService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_shareService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.UserNotificationController.Add(VOffice.Model.UserNotification)">
+            <summary>
+            Insert a User-ClientId
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.LoginHistoryController">
+            <summary>
+            Customer API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.LoginHistoryController.#ctor(VOffice.ApplicationService.Implementation.Contract.IShareService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_shareService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.LoginHistoryController.Add(VOffice.Model.LoginHistory)">
+            <summary>
+            Insert a LoginHistory  to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.LoginHistoryController.Search(VOffice.Repository.Queries.LoginHistoryQuery)">
+            <summary>
+            Get a list of LoginHistory via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.SystemConfigController">
+            <summary>
+            Customer API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.#ctor(VOffice.ApplicationService.Implementation.Contract.IShareService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_shareService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.Search(VOffice.Repository.Queries.SystemConfigQuery)">
+            <summary>
+            Get a list of SystemConfig via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.GetAll">
+            <summary>
+            Get All SystemConfig
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.Add(VOffice.Model.SystemConfig)">
+            <summary>
+            Insert a SystemConfig  to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.Update(VOffice.Model.SystemConfig)">
+            <summary>
+            Update a SystemConfig Deparment
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.GetSystemConfigByCode(System.String,System.Boolean)">
+            <summary>
+            Get A SystemConfig By Code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.Get(System.Int32)">
+            <summary>
+            Get A SystemConfig By id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.CloneSystemConfig(System.String)">
+            <summary>
+            Clone systemConfig  to Database
+            </summary>
+            <param name="listDepartmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigController.DeleteLogical(System.Int32)">
+            <summary>
+            Delete Logical systemConfig
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController">
+            <summary>
+            SystemConfigDepartment API. An element of SystemConfig Deparment Service
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.#ctor(VOffice.ApplicationService.Implementation.Contract.IShareService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_shareService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.Search(VOffice.Repository.Queries.SystemConfigDepartmentQuery)">
+            <summary>
+            Get a list of SystemConfig Deparment via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.GetAll">
+            <summary>
+            Get All SystemConfig Deparment
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.Add(VOffice.Model.SystemConfigDepartment)">
+            <summary>
+            Insert a SystemConfig Deparment to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.Update(VOffice.Model.SystemConfigDepartment)">
+            <summary>
+            Update a SystemConfig Deparment
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.GetValue(VOffice.Repository.Queries.SystemConfigDepartmentQuery)">
+            <summary>
+            Get value of systemconfig for department. query.Title, query.DepartmentId, query.DefaultValue
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Share.SystemConfigDepartmentController.Get(System.Int32,System.Int32)">
+            <summary>
+            Get systemconfig of department by configId, departmentId. 
+            </summary>
+            <param name="departmentId"></param>
+            <param name="configId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Task.TaskAttachmentController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAttachmentController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAttachmentController.AddListAttachment(System.Collections.Generic.List{VOffice.Model.TaskAttachment})">
+            <summary>
+            Insert a List Attachment to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAttachmentController.UpdateListAttachment(System.Collections.Generic.List{VOffice.Model.TaskAttachment})">
+            <summary>
+            Insert a List Attachment to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAttachmentController.GetByTask(System.String,System.Int32)">
+            <summary>
+            Fetch records by taskId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Task.TaskDocumentsController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskDocumentsController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskDocumentsController.Add(VOffice.Model.TaskDocument)">
+            <summary>
+            Insert a TaskDocuments to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskDocumentsController.GetByTask(System.Int32)">
+            <summary>
+            Fetch records by taskId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Task.TaskAssigneeController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_taskService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.Add(System.Collections.Generic.List{VOffice.Model.TaskAssignee})">
+            <summary>
+            Insert a List Assignee to Database
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.GetByTask(System.Int32)">
+            <summary>
+            Fetch records by taskId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.GetTaskAssigneeViewDetail(System.Int32)">
+            <summary>
+            Fetch records viewdetail by taskId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.GetTaskDocumentHistory(System.Int32,System.Int32,System.String)">
+            <summary>
+            Fetch document history for Task Assignee
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.UpdateTaskAssigneeAssignee(VOffice.Repository.Queries.TaskAssigneeQuery)">
+            <summary>
+            Update TaskAssignee Assignee
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.ViewTaskDetail(System.String,System.Int32)">
+            <summary>
+            Update TaskAssignee View TaskDetail
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.AddMoreTaskAssignee(System.Collections.Generic.List{VOffice.Model.TaskAssignee})">
+            <summary>
+            Update More TaskAssignee
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskAssigneeController.CheckPermissionUserByTaskId(System.Int32,System.String)">
+            <summary>
+            check permission user by taskId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Controllers.Api.Task.TaskController">
+            <summary>
+            DocumentType API. An element of DocumentService
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.#ctor(VOffice.ApplicationService.Implementation.Contract.ITaskService,VOffice.ApplicationService.Implementation.Contract.ICategoryService)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="_taskService"></param>
+            <param name="_categoryService"></param>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.Get(System.Int32)">
+            <summary>
+            Get a Task by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.GetTaskDeTail(System.Int32)">
+            <summary>
+            Get a Task by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.GetComplexTask(System.Int32)">
+            <summary>
+            Get a Task by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.Search(VOffice.Repository.Queries.TaskQuery)">
+            <summary>
+            Get a list of Task via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.GetAll">
+            <summary>
+            Get All Task
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.Add(VOffice.Model.Task)">
+            <summary>
+            Insert a Task to Database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.Update(VOffice.Model.Task)">
+            <summary>
+            Update a Task
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.DeleteLogical(System.Int32)">
+            <summary>
+            Mark a Task as Deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.GetTaskCode(System.Int32)">
+            <summary>
+            Get a TaskCode
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.AddSetOfTask(VOffice.Model.ComplexTask)">
+            <summary>
+            Add set of Task - TaskAssignee - TaskDocument
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.UpdateSetOfTask(VOffice.Model.ComplexTask)">
+            <summary>
+            Update set of Task - TaskAssignee - TaskDocument
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.GetTaskByDocumentId(System.Int32,System.Boolean,System.String)">
+            <summary>
+            Get list Task of Document
+            </summary>
+            <param name="docId"></param>
+            <param name="receivedDoc"></param>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.CountNewTask(VOffice.Repository.Queries.TaskQuery)">
+            <summary>
+            Count number of default Task via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.GetTaskAdvance(VOffice.Repository.Queries.TaskQuery)">
+            <summary>
+            Count number of default Task via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.DownloadTaskAdvance(VOffice.Repository.Queries.TaskQuery)">
+            <summary>
+            Count number of default Task via SQL Store
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.CountUserTask(VOffice.Repository.Queries.TaskQuery)">
+            <summary>
+            Count user task
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Controllers.Api.Task.TaskController.SearchMobile(VOffice.Repository.Queries.TaskQuery)">
+            <summary>
+            Get a list of Task via SQL Store (Mobile)
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Models.RegisterBindingModel">
+            <summary>
+            Register model
+            </summary>
+        </member>
+        <member name="M:VOffice.API.Modules.EMail.SendAsync(Microsoft.AspNet.Identity.IdentityMessage)">
+            <summary>
+            send email forgot password
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VOffice.API.Modules.EMail.configSendGridasync(Microsoft.AspNet.Identity.IdentityMessage)">
+            <summary>
+            Config email
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VOffice.API.Providers.ApplicationOAuthProvider">
+            <summary>
+            OAuth
+            </summary>
+        </member>
+    </members>
+</doc>
